@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import './App.css';
+import pic from "./images/loginph.png";
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function App() {
-
   
   //use of hook for couting
   const [noOfRows, setNoOfRows] = useState(1);
   return (
     <div className="app container p-5">
+
+    <button id="fk" type="button" class="btn btn-primary" onClick="#" >back</button>
+    <center>
+    <img src={pic}/>
+    </center>
+    
     <table class="table table-hover table-bordered p-5">
         <thead>
           <tr>
@@ -35,7 +41,7 @@ export default function App() {
         </table>
 
       <h1 className="p-5">Patient Record History</h1>
-      <button type="button" class="btn btn-primary me-3"  onClick={() => setNoOfRows(noOfRows + 1)}>Add Treatement</button>
+      <button id="fks" type="button" class="btn btn-primary me-3"  onClick={() => setNoOfRows(noOfRows + 1)}>Add Treatement</button>
       <table class="table table-hover table-bordered p-5">
         <thead>
           <tr>
