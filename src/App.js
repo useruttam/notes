@@ -1,77 +1,52 @@
 import React, { useState } from "react";
 import './App.css';
 import pic from "./images/loginph.png";
+import data from "./mock.json"
 //Bootstrap
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function App() {
-  
-  //use of hook for couting
-  const [noOfRows, setNoOfRows] = useState(1);
+         const [records,setRecords]=useState(data);
+
   return (
     <div className="app container p-5">
-
+    
     <button id="fk" type="button" class="btn btn-primary" onClick="#" >back</button>
+    
+    <h2>Patient Record History</h2>
+    <br/>
     <center>
     <img src={pic}/>
+    <br/>
+    <center>
+    <button id="fks" type="button" class="btn btn-secondary" onClick="#" >Username</button>
+   </center>
     </center>
+     <div className="app-container">
+     <table>
+     <thead>
+      <tr>
+      <th>Date</th>
+      <th>Doctor Name</th>
+      <th>Diagnosis</th>
+      <th>Prescription</th>
+      </tr>
+      </thead>
+      <tbody>
+      {records.map((record)=>( <tr>
+        <td>{record.Date_today}</td>
+        <td>{record.DoctorsName}</td>
+        <td>{record.DIagnosis_tested}</td>
+        <td> <a href="{record.Prescription_given}">See Prescription</a></td>
+        </tr>
+        ))}
+     
+      </tbody>
+
+     </table>
+     </div>
+
     
-    <table class="table table-hover table-bordered p-5">
-        <thead>
-          <tr>
-            <th scope="col">Patient Name:Your name </th>
-            <th scope="col">Patient ID:34ID4843</th>
-            <th scope="col">Blood Group: A+</th>
-          </tr>
-        </thead>
-        </table>
-        <table class="table table-hover table-bordered p-5">
-        <tr>
-        <p>Name of Emergency Contact: XYZETG</p>
-        </tr>
-        <tr>
-        <p>Emergency Contact Number :9709174702 </p>
-        </tr>
-        <tr>
-        <p>Significant Medical History: cancerous </p>
-        </tr>
-        <tr>
-        <p>Drug Allergeis: Metformin, Nontelukast </p>
-        </tr>
-
-        </table>
-
-      <h1 className="p-5">Patient Record History</h1>
-      <button id="fks" type="button" class="btn btn-primary me-3"  onClick={() => setNoOfRows(noOfRows + 1)}>Add Treatement</button>
-      <table class="table table-hover table-bordered p-5">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">DATE</th>
-            <th scope="col">Doctor Name</th>
-            <th scope="col">Diagnosis</th>
-            <th scope="col">Prescription</th>
-          </tr>
-        </thead>
-        <tbody>
-        {[...Array(noOfRows)].map((elementInArray, index) => {
-         
-              return (
-                <tr>
-                <th scope="row">{index}</th>
-                <td><input type="date"></input></td>
-                <td><input type="text"></input></td>
-                <td><input type="text"></input></td>
-                <td><a href="#"> See Prescription</a></td>
-                <td></td>
-              </tr>
-                );
-            })}
-
-            
-            </tbody>
-            </table>
-            
-            <button type="button" class="btn btn-danger" onClick={() => setNoOfRows(noOfRows - 1)}>Delete</button>
        </div>
   );
 }
